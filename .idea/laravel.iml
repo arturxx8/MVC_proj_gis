@@ -39,16 +39,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="PHARS">
-        <CLASSES>
-          <root url="phar://$MODULE_DIR$/composer.phar" />
-        </CLASSES>
-        <SOURCES>
-          <root url="phar://$MODULE_DIR$/composer.phar" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="PHP">
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/symfony/browser-kit" />
@@ -119,6 +109,16 @@
           <root url="file://$MODULE_DIR$/vendor/monolog/monolog" />
           <root url="file://$MODULE_DIR$/vendor/symfony/http-kernel" />
           <root url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/composer.phar" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/composer.phar" />
         </SOURCES>
       </library>
     </orderEntry>
