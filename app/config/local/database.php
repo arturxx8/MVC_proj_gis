@@ -31,7 +31,7 @@ return array(
 			'prefix'    => '',
 		),
 
-		'pgsql' => array(
+		/*'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
 			'database' => 'homestead',
@@ -40,7 +40,7 @@ return array(
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
-		),
+		),*/
 
 	),
 

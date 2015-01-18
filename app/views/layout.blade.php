@@ -40,21 +40,29 @@
         <div class="container">
             <div class="nav-collapse collapse">
                 <div class="row">
-                    <div class="span10">
+                    <div class="span8">
                         <ul class="nav">
                             <li class="active"><a href="/"><i class="icon-home"></i>&nbsp;Главная</a></li>
                             <li class="divider-vertical"></li>
-                            <li><a href="/index.php?p=catalog" rel="tooltip" title="Каталог методических пособий">Каталог</a></li>
+                            <li><a href="/catalog" rel="tooltip" title="Каталог методических пособий">Каталог</a></li>
                         </ul>
-                        <form class="navbar-search form-search" action="/index.php?p=poisk" method="POST">
+                        {{ Form::open(array('url' => URL::route('search'), 'method' => 'POST', 'class'=>'navbar-search form-search')) }}
                             <div class="input-append">
-                                <input type="text" class="span3 search-query" placeholder="Поиск по каталогу" name="searchTextBox">
-                                <button type="submit" class="btn">Найти</button>
+                                {{Form::input('text','searchTextBox',null, array('class'=>'span3 search-query', 'placeholder'=>'Поиск по каталогу')) }}
+                                {{ Form::submit('найти', array('class'=>'btn')) }}
                             </div>
-                        </form>
+                        {{Form::close()}}
                     </div>
-                    <div class="span2">
-
+                    <div class="span4">
+                        <ul class="nav pull-right">
+                            @if(Auth::check())
+                                <li> {{ HTML::linkRoute('profile', 'Профиль' ) }}</li>
+                                <li class="divider-vertical"></li>
+                                <li> {{ HTML::linkRoute('logout', 'Выход ('.Auth::user()->name.')') }}</li>
+                            @else
+                                <li> {{ HTML::link('#authModal', 'Login',array('id'=>'authModalBtn', 'class'=>'pull-right', 'data-toggle'=>'modal', 'data-original-title'=>'Вход')) }} </li>
+                            @endif
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -79,38 +87,42 @@
 <div class="content clearfix">
     <div class="container">
         <div class="contentIndents">
-            @yield('content');
+            @if(Session::has('flash_notice'))
+                <div id="flash_notice">{{ Session::get('flash_notice') }}</div>
+            @endif
+            @yield('content')
         </div>
     </div>
 </div>
-<footer class="clearfix">
-    <div class="container">
-        <div class="contentIndents">
-            <div class="row-fluid">
-                <div class="span4">
-                    <address>
-                        <strong>СПб ГБУК "ГМГС"</strong><br>
-                        197101, Санкт-Петербург,<br>
-                        Невский проспект 179<br>
-                        <abbr title="Телефон">тел.</abbr>: +7 (812) 274 26 35
-                    </address>
-                    <address>
-                        <strong>Разработано в Отделе ИТ:</strong><br>
-                        <i class="icon-envelope icon-white"></i>&nbsp;<a href="mailto:it.gmgs@gmail.com">it.gmgs@gmail.com</a>
-                    </address>
-                </div>
 
-                <div class="span8">
-                    <ul class="footer-links">
-                        <li class="pull-right"><a href="#"><i class="icon-arrow-up"></i>&nbsp;Наверх</a></li>
-                        <li><a href="/index.php?p=korzina">Корзина</a></li>
-                        <li><a href="/index.php?p=catalog">Каталог</a></li>
-                        <!--Ссылка на ЛК-->
-                    </ul>
+<footer class="clearfix">
+        <div class="container">
+            <div class="contentIndents">
+                <div class="row-fluid">
+                    <div class="span4">
+                        <address>
+                            <strong>СПб ГБУК "ГМГС"</strong><br>
+                            197101, Санкт-Петербург,<br>
+                            Невский проспект 179<br>
+                            <abbr title="Телефон">тел.</abbr>: +7 (812) 274 26 35
+                        </address>
+                        <address>
+                            <strong>Разработано в Отделе ИТ:</strong><br>
+                            <i class="icon-envelope icon-white"></i>&nbsp;<a href="mailto:it.gmgs@gmail.com">it.gmgs@gmail.com</a>
+                        </address>
+                    </div>
+
+                    <div class="span8">
+                        <ul class="footer-links">
+                            <li class="pull-right"><a href="#"><i class="icon-arrow-up"></i>&nbsp;Наверх</a></li>
+                            <li><a href="/index.php?p=korzina">Корзина</a></li>
+                            <li><a href="/index.php?p=catalog">Каталог</a></li>
+                            <!--Ссылка на ЛК-->
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </footer>
 
 <div id="authModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
@@ -119,33 +131,34 @@
         <h3 id="myModalLabel"><i class="icon-user"></i>&nbsp;Авторизация</h3>
     </div>
     <div class="modal-body">
-        <form class="form-horizontal" method="POST" action="/enter.php">
-            <input type="hidden" name="act" value="login">
-            <div class="control-group">
-                <label class="control-label" for="inputEmail">Логин</label>
-                <div class="controls">
-                    <input type="text" id="inputEmail" placeholder="Логин" name="login">
-                </div>
+        {{ Form::open(array('url' => 'login', 'method' => 'POST')) }}
+
+        <div class="control-group">
+            {{ Form::label('login', 'Логин', array('class'=>'control-label')) }}
+            <div class="controls">
+                {{ Form::text('login', Input::old('login')) }}
             </div>
-            <div class="control-group">
-                <label class="control-label" for="inputPassword">Пароль</label>
-                <div class="controls">
-                    <input type="password" id="inputPassword" placeholder="Пароль" name="pass">
-                </div>
+        </div>
+
+        <div class="control-group">
+            {{ Form::label('password', 'Пароль', array('class'=>'control-label')) }}
+            <div class="controls">
+                {{ Form::password('password') }}
             </div>
-            <div class="control-group">
-                <div class="controls">
-                    <label class="checkbox"><input type="checkbox"> Запомнить</label>
-                    <button type="submit" class="btn">Войти</button>
-                    <script type="text/javascript">
-                        function reg() {
-                            window.location.href='/index.php?p=registr';
-                        }
-                    </script>
-                    <button class="btn" type="button" onclick="reg()">Регистрация</button>
-                </div>
+        </div>
+        <div class="control-group">
+
+                {{ Form::label('password', 'Запомнить', array('class'=>'control-label', 'style'=>'display: inline;')) }}
+
+                {{ Form::checkbox('remember', 'Запомнить') }}
+                <br \><br \>
+            <div class="controls">
+                {{ Form::submit('Войти', array('class'=>'btn')) }}
+                {{ Form::input('button', null, 'Регистрация', array('onclick'=>'window.location.href="'. URL::to('reg') .'";', 'class'=>'btn')) }}
             </div>
-        </form>
+        </div>
+
+        {{ Form::close() }}
     </div>
 </div>
 
