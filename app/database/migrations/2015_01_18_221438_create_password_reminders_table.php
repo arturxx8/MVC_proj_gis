@@ -3,22 +3,20 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuthorTable extends Migration {
+class CreatePasswordRemindersTable extends Migration {
 
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
-	 * CREATE TABLE author (
-	id integer NOT NULL,
-	author_fio character varying(128)
-	);
 	 */
 	public function up()
 	{
-		Schema::create('author', function($table) {
-			$table->integer('id');
-			$table->string('author_fio', 128)->nullable();
+		Schema::create('password_reminders', function(Blueprint $table)
+		{
+			$table->string('email')->index();
+			$table->string('token')->index();
+			$table->timestamp('created_at');
 		});
 	}
 
@@ -29,7 +27,7 @@ class CreateAuthorTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('author');
+		Schema::drop('password_reminders');
 	}
 
 }

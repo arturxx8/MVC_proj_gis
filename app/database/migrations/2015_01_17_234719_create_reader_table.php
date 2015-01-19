@@ -30,7 +30,7 @@ class CreateReaderTable extends Migration {
 	{
 		Schema::create('reader', function($table) {
 			$table->increments('id');
-			$table->bigInteger('barcode')->nullable();
+			$table->bigInteger('barcode');
 			$table->string('surname', 20)->nullable();
 			$table->string('name', 20)->nullable();
 			$table->string('patronymic', 20)->nullable();
@@ -40,8 +40,8 @@ class CreateReaderTable extends Migration {
 			$table->string('position', 40)->nullable();
 			$table->string('address', 128)->nullable();
 			$table->string('telephone', 32)->nullable();
-			$table->string('login', 12);
-			$table->string('password', 64);
+			$table->string('login', 12)->nullable();
+			$table->string('password', 64)->nullable();
 			$table->string('url_pic', 8)->nullable();
 			$table->string('remember_token', 100)->nullable();
 			$table->timestamps();

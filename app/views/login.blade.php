@@ -1,12 +1,16 @@
 
 @extends('layout')
-
+@section('title')
+    Логин - Библиотека ГМГС
+@stop
+@section('nav-login')
+    class="active"
+@stop
 @section('content')
-    <h1>Login</h1>
 
     <!-- check for login error flash var -->
     @if (Session::has('flash_error'))
-        <div id="flash_error">{{ Session::get('flash_error') }}</div>
+        <div class="alert alert-error">{{ Session::get('flash_error') }}</div>
     @endif
 
     {{ Form::open(array('url' => 'login', 'method' => 'POST')) }}

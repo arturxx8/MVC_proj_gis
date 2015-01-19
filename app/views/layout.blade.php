@@ -42,25 +42,25 @@
                 <div class="row">
                     <div class="span8">
                         <ul class="nav">
-                            <li class="active"><a href="/"><i class="icon-home"></i>&nbsp;Главная</a></li>
+                            <li @yield('nav-home')><a href="/"><i class="icon-home"></i>&nbsp;Главная</a></li>
                             <li class="divider-vertical"></li>
-                            <li><a href="/catalog" rel="tooltip" title="Каталог методических пособий">Каталог</a></li>
+                            <li @yield('nav-catalog')><a href="/catalog" rel="tooltip" title="Каталог методических пособий">Каталог</a></li>
                         </ul>
                         {{ Form::open(array('url' => URL::route('search'), 'method' => 'POST', 'class'=>'navbar-search form-search')) }}
                             <div class="input-append">
                                 {{Form::input('text','searchTextBox',null, array('class'=>'span3 search-query', 'placeholder'=>'Поиск по каталогу')) }}
-                                {{ Form::submit('найти', array('class'=>'btn')) }}
+                                {{ Form::submit('Найти', array('class'=>'btn')) }}
                             </div>
                         {{Form::close()}}
                     </div>
                     <div class="span4">
                         <ul class="nav pull-right">
                             @if(Auth::check())
-                                <li> {{ HTML::linkRoute('profile', 'Профиль' ) }}</li>
+                                <li @yield('nav-profile')> {{ HTML::linkRoute('profile', 'Профиль' ) }}</li>
                                 <li class="divider-vertical"></li>
                                 <li> {{ HTML::linkRoute('logout', 'Выход ('.Auth::user()->name.')') }}</li>
                             @else
-                                <li> {{ HTML::link('#authModal', 'Login',array('id'=>'authModalBtn', 'class'=>'pull-right', 'data-toggle'=>'modal', 'data-original-title'=>'Вход')) }} </li>
+                                <li @yield('nav-login')> {{ HTML::link('#authModal', 'Войти',array('id'=>'authModalBtn', 'class'=>'pull-right', 'data-toggle'=>'modal', 'data-original-title'=>'Вход')) }} </li>
                             @endif
                         </ul>
                     </div>
@@ -88,7 +88,7 @@
     <div class="container">
         <div class="contentIndents">
             @if(Session::has('flash_notice'))
-                <div id="flash_notice">{{ Session::get('flash_notice') }}</div>
+                <div class="alert alert-success">{{ Session::get('flash_notice') }}</div>
             @endif
             @yield('content')
         </div>

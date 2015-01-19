@@ -3,7 +3,9 @@
 @section('title')
     Библиотека ГМГС
 @stop
-
+@section('nav-home')
+class="active"
+@stop
 @section('content')
     <div class="row-fluid">
         <div class="span6">

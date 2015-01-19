@@ -3,22 +3,21 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuthorTable extends Migration {
+class CreateDepartmentTable extends Migration {
 
 	/**
 	 * Run the migrations.
-	 *
-	 * @return void
-	 * CREATE TABLE author (
+	 *CREATE TABLE department (
 	id integer NOT NULL,
-	author_fio character varying(128)
+	departmentname character varying(512) NOT NULL
 	);
+	 * @return void
 	 */
 	public function up()
 	{
-		Schema::create('author', function($table) {
+		Schema::create('department', function($table){
 			$table->integer('id');
-			$table->string('author_fio', 128)->nullable();
+			$table->string('departmentname', 512);
 		});
 	}
 
@@ -29,7 +28,7 @@ class CreateAuthorTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('author');
+		Schema::drop('department');
 	}
 
 }

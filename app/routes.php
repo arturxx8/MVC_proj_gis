@@ -15,43 +15,34 @@ Route::any('/env', function(){
  return App::environment();
 });
 
-Route::get('/', array('as' => 'home', 'uses' => 'HomeController@showWelcome'));
+Route::get('/', array('as' => 'home', 'uses' => 'HomeController@showHomePage'));
 
-Route::get('login', array('as' => 'login', function () {
-    return View::make('login');
-}))->before('guest');
+Route::get('login', array('as' => 'login', 'uses' => 'LoginController@showLoginPage'))
+    ->before('guest');
 
-Route::post('login', function () {
-    $user = array(
-        'login' => Input::get('login'),
-        'password' => Input::get('password')
-    );
+Route::post('login', 'LoginController@SignIn')
+    ->before('csrf')
+    ->before('guest');
 
-    if (Auth::attempt($user)) {
-        Session::flash('flash_notice', 'You are successfully logged in.');
-        return Redirect::route('home');
-    }
-
-    // authentication failure! lets go back to the login page
-    return Redirect::route('login')
-        ->with('flash_error', 'Your username/password combination was incorrect.')
-        ->withInput();
-})->before('csrf');
-
-Route::get('logout', array('as' => 'logout', function () {
-    Auth::logout();
-
-    return Redirect::route('home')
-        ->with('flash_notice', 'You are successfully logged out.');
-}))->before('auth');
+Route::get('logout', array('as' => 'logout', 'uses'=>'LoginController@LogOut' ))
+    ->before('auth');
 
 Route::get('profile', array('as' => 'profile', function () {
     return View::make('profile');
 }))->before('auth');
 
-Route::get('reg', array('as' => 'reg', function () {
-    return View::make('reg');
-}))->before('guest');
+Route::get('reg', array('as' => 'reg', 'uses'=>'LoginController@showRegisterPage'))
+    ->before('guest');
+
+Route::post('reg', 'LoginController@Registration')
+    ->before('guest');
+
+Route::get('catalog', 'CatalogController@showCatalog')->before('auth'); // НЕТ ПРОВЕРКИ НА ПУСТОЙ КАТАЛОГ
+
+Route::pattern('id', '[0-9]+');
+Route::get('catalog/{id}', 'CategoryController@showCategory')->before('auth');
+
+Route::get('annot/{id}', 'AnnotController@showAnnot')->before('auth');
 
 Route::get('search', array('as' => 'search', function () {
     return View::make('search');
@@ -60,3 +51,6 @@ Route::get('search', array('as' => 'search', function () {
 Route::post('search', function () {
     return View::make('search');
 })->before('auth');
+
+Route::controller('password', 'RemindersController');
+Route::get('remind_pass','RemindersController@getRemind');
