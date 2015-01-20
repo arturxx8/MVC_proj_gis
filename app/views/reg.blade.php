@@ -40,13 +40,20 @@
         {{ Form::text('name') }}
     </p>
     <p>
-        {{ Form::label('surname', 'Имя') }}<br/>
+        {{ Form::label('surname', 'Фамилия') }}<br/>
         {{ Form::text('surname') }}
     </p>
-
+    <p>
+        {{ Form::label('patronymic', 'Отчество') }}<br/>
+        {{ Form::text('patronymic') }}
+    </p>
+    <p>
+        {{ Form::label('datebirth', 'Дата рождения') }}<br/>
+        {{ Form::input('date','datebirth') }}
+    </p>
 
     <!-- submit button -->
-    <p>{{ Form::submit('Registration!') }}</p>
+    <p>{{ Form::submit('Зарегестрироваться') }}</p>
 
     {{ Form::close() }}
 @stop
