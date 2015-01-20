@@ -10,5 +10,6 @@ class Department extends Eloquent  {
      * @var string
      */
     protected $table = 'department';
+    protected $list = DB::table('department')->lists('departmentName');
 
 }

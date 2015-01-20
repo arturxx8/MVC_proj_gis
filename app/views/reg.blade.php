@@ -13,7 +13,7 @@
         <div class="alert alert-error">{{ Session::get('flash_error') }}</div>
     @endif
 
-    {{ Form::open(array('url' => 'reg', 'method' => 'POST')) }}
+    {{ Form::open(array('url' => 'reg', 'method' => 'POST'),$_FILES=true) }}
 
     <!-- username field -->
     <p>
@@ -50,6 +50,22 @@
     <p>
         {{ Form::label('datebirth', 'Дата рождения') }}<br/>
         {{ Form::input('date','datebirth') }}
+    </p>
+    <!--  <p>
+        {{ Form::label('organization', 'Организация') }}<br/>
+        {{ Form::select('organization') }}
+    </p> -->
+    <!--  <p>
+        {{ Form::label('department', 'Отдел') }}<br/>
+        {{ Form::select('department') }}
+    </p> -->
+    <p>
+        {{ Form::label('telephone', 'Телефон') }}<br/>
+        {{ Form::text('telephone') }}
+    </p>
+    <p>
+        {{ Form::label('image', 'Аватар') }}<br/>
+        {{ Form::file('image'); }}
     </p>
 
     <!-- submit button -->
