@@ -11,6 +11,7 @@ class Catalog extends Eloquent  {
      */
     protected $table = 'category';
 
+<<<<<<< HEAD
     public static function Catalogs() {
 
         $cats = array();
@@ -22,6 +23,12 @@ class Catalog extends Eloquent  {
             return $cats;
         }
         return '';
+=======
+    static function allCategoryList()
+    {
+        $catList = DB::table('category')->lists('category_name');
+        return $catList;
+>>>>>>> 6153e349d07d67cc97f8b43b61069d78dc1d0cb3
     }
 
 }

@@ -15,7 +15,22 @@ class CatalogController extends BaseController {
     |
     */
 
+<<<<<<< HEAD
 
+=======
+    public static function Catalogs() {
+
+        $cats = array();
+        if (count(Catalog::all()) > 0){
+            foreach (Catalog::all() as $cat) {
+                $cats_ID[$cat['id']][] = $cat;
+                $cats[$cat['parent_id']][$cat['id']] = $cat;
+            }
+            return $cats;
+        }
+        return '';
+    }
+>>>>>>> 6153e349d07d67cc97f8b43b61069d78dc1d0cb3
 
 
     public function showCatalog()
