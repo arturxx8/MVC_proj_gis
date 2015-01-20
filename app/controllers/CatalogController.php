@@ -15,9 +15,6 @@ class CatalogController extends BaseController {
     |
     */
 
-<<<<<<< HEAD
-
-=======
     public static function Catalogs() {
 
         $cats = array();
@@ -30,14 +27,11 @@ class CatalogController extends BaseController {
         }
         return '';
     }
->>>>>>> 6153e349d07d67cc97f8b43b61069d78dc1d0cb3
 
 
     public function showCatalog()
     {
-
         return View::make('catalog');
-        //return App::abort(404,'Нет каталогов');
     }
 
 }

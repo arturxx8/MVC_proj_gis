@@ -11,11 +11,12 @@ class Catalog extends Eloquent  {
      */
     protected $table = 'category';
 
-<<<<<<< HEAD
-    public static function Catalogs() {
+
+    public static function Catalogs()
+    {
 
         $cats = array();
-        if (count(Catalog::all()) > 0){
+        if (count(Catalog::all()) > 0) {
             foreach (Catalog::all() as $cat) {
                 $cats_ID[$cat['id']][] = $cat;
                 $cats[$cat['parent_id']][$cat['id']] = $cat;
@@ -23,12 +24,36 @@ class Catalog extends Eloquent  {
             return $cats;
         }
         return '';
-=======
+    }
+    static public function tree($cats,$parent_id,$only_parent = false){
+    if(is_array($cats) and isset($cats[$parent_id])){
+        $tree = '<ul class="sub-menu">';
+        if($only_parent==false){
+            foreach($cats[$parent_id] as $cat){
+                if (Book::where('category','=',$cat['id'])->count()==0)
+                    $tree .= '<li >'.'<p class="title">'.$cat['category_name'].'</p>';
+                else
+                    $tree .= '<li >'.'<p class="title">'.'<a class="title" href="'.URL::to("catalog").'/'.$cat['id'].'">'.$cat['category_name'].'</a>'.'</p>';
+                $tree .=  Catalog::tree($cats,$cat['id']);
+                $tree .= '</li>';
+            }
+        }elseif(is_numeric($only_parent)){
+            $cat = $cats[$parent_id][$only_parent];
+            $tree .= '<li>'.'<p class="title">'.'<a class="title" href="'.URL::to("catalog").'/'.$cat['id'].'">'.$cat['category_name'].'</a>'.'</p>';
+            $tree .=  Catalog::tree($cats,$cat['id']);
+            $tree .= '</li>';
+        }
+        $tree .= '</ul>';
+    }
+    else return null;
+    return $tree;
+    }
+
     static function allCategoryList()
     {
         $catList = DB::table('category')->lists('category_name');
         return $catList;
->>>>>>> 6153e349d07d67cc97f8b43b61069d78dc1d0cb3
+
     }
 
 }
