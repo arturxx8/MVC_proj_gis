@@ -11,11 +11,12 @@ class Catalog extends Eloquent  {
      */
     protected $table = 'category';
 
-<<<<<<< HEAD
-    public static function Catalogs() {
+
+    public static function Catalogs()
+    {
 
         $cats = array();
-        if (count(Catalog::all()) > 0){
+        if (count(Catalog::all()) > 0) {
             foreach (Catalog::all() as $cat) {
                 $cats_ID[$cat['id']][] = $cat;
                 $cats[$cat['parent_id']][$cat['id']] = $cat;
@@ -23,12 +24,13 @@ class Catalog extends Eloquent  {
             return $cats;
         }
         return '';
-=======
+    }
+
     static function allCategoryList()
     {
         $catList = DB::table('category')->lists('category_name');
         return $catList;
->>>>>>> 6153e349d07d67cc97f8b43b61069d78dc1d0cb3
+
     }
 
 }
