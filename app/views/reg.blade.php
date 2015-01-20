@@ -17,30 +17,17 @@
 
     <!-- username field -->
     <p>
-<<<<<<< HEAD
-        {{ Form::label('login', 'Login') }}<br/>
-=======
         {{ Form::label('login', 'Логин') }}<br/>
->>>>>>> 6153e349d07d67cc97f8b43b61069d78dc1d0cb3
         {{ Form::text('login', Input::old('login')) }}
     </p>
 
     <!-- password field -->
     <p>
-<<<<<<< HEAD
-        {{ Form::label('password', 'Password') }}<br/>
-=======
         {{ Form::label('password', 'Пароль') }}<br/>
->>>>>>> 6153e349d07d67cc97f8b43b61069d78dc1d0cb3
         {{ Form::password('password') }}
     </p>
     <!-- password2 field -->
     <p>
-<<<<<<< HEAD
-        {{ Form::label('password2', 'Password') }}<br/>
-        {{ Form::password('password2') }}
-    </p>
-=======
         {{ Form::label('password2', 'Подтвердите пароль') }}<br/>
         {{ Form::password('password2') }}
     </p>
@@ -57,7 +44,6 @@
         {{ Form::text('surname') }}
     </p>
 
->>>>>>> 6153e349d07d67cc97f8b43b61069d78dc1d0cb3
 
     <!-- submit button -->
     <p>{{ Form::submit('Registration!') }}</p>
