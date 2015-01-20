@@ -5,13 +5,13 @@ if(is_array($cats) and isset($cats[$parent_id])){
 $tree = '<ul class="sub-menu">';
     if($only_parent==false){
     foreach($cats[$parent_id] as $cat){
-    $tree .= '<li >'.'<p class="title">'.'<a class="title" href="'.URL::to("catalog").'/'.$cat['id'].'">'.$cat['category_name'].'</a>'.'</p>';
+        $tree .= '<li >'.'<p class="title">'.'<a class="title" href="'.URL::to("catalog").'/'.$cat['id'].'">'.$cat['category_name'].'</a>'.'</p>';
         $tree .=  tree($cats,$cat['id']);
         $tree .= '</li>';
     }
     }elseif(is_numeric($only_parent)){
     $cat = $cats[$parent_id][$only_parent];
-    $tree .= '<li>'.'<p class="title">'.'<a class="title" href="'.URL::to("catalog").'/'.$cat['id'].'">'.$cat['category_name'].'</a>'.'</p>';
+        $tree .= '<li>'.'<p class="title">'.$cat['category_name'].'</p>';
         $tree .=  tree($cats,$cat['id']);
         $tree .= '</li>';
     }
