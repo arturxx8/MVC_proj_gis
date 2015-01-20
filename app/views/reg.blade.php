@@ -51,14 +51,11 @@
         {{ Form::label('datebirth', 'Дата рождения') }}<br/>
         {{ Form::input('date','datebirth') }}
     </p>
-    <!--  <p>
-        {{ Form::label('organization', 'Организация') }}<br/>
-        {{ Form::select('organization') }}
-    </p> -->
-    <!--  <p>
+
+    <p>
         {{ Form::label('department', 'Отдел') }}<br/>
-        {{ Form::select('department') }}
-    </p> -->
+        {{ Form::select('department',Department::allDepartList()) }}
+    </p>
     <p>
         {{ Form::label('telephone', 'Телефон') }}<br/>
         {{ Form::text('telephone') }}
