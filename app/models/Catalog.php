@@ -11,4 +11,10 @@ class Catalog extends Eloquent  {
      */
     protected $table = 'category';
 
+    static function allCategoryList()
+    {
+        $catList = DB::table('category')->lists('category_name');
+        return $catList;
+    }
+
 }

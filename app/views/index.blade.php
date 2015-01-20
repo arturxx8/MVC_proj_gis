@@ -36,9 +36,9 @@ class="active"
                         </a>
                     </li>
                     <li>
-                        <a href="/index.php?p=poisk" class="thumbnail">
+                        <a href="{{URL::route('search')}}" class="thumbnail">
                             <img width="55" src="img/icon-search_64.png" class="pull-left" alt="">
-                            <h3>Поиск</h3>
+                            <h3>Расширенный поиск</h3>
                             <div class="clearfix"></div>
                         </a>
                     </li>

@@ -43,13 +43,13 @@ Route::get('catalog/{id}', 'CategoryController@showCategory')->before('auth');
 
 Route::get('annot/{id}', 'AnnotController@showAnnot')->before('auth');
 
-Route::get('search', array('as' => 'search', function () {
-    return View::make('search');
-}))->before('auth');
+Route::get('search', array('as' => 'search', 'uses'=>'SearchController@SearchBooksExtend'))
+    ->before('auth');
 
-Route::post('search', function () {
-    return View::make('search');
-})->before('auth');
+Route::post('search', 'SearchController@SearchBooks')
+    ->before('csrf')
+    ->before('auth');
 
 Route::controller('password', 'RemindersController');
 Route::get('remind_pass','RemindersController@getRemind');
+

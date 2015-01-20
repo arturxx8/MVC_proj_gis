@@ -31,16 +31,16 @@ return array(
 			'prefix'    => '',
 		),
 
-		/*'pgsql' => array(
+		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'homestead',
-			'username' => 'homestead',
-			'password' => 'secret',
+			'host'     => 'ymnyashi.ru',
+			'database' => 'gmgs_9220_lib',
+			'username' => 'gmgs_9220_book',
+			'password' => 'book2014',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
-		),*/
+		),
 
 	),
 
