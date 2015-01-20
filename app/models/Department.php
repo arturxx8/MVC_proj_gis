@@ -12,7 +12,7 @@ class Department extends Eloquent  {
     protected $table = 'department';
     static function allDepartList()
     {
-        $depList = DB::table('department')->lists('departmentName');
+        $depList = DB::table('department')->lists('departmentname');
         return $depList;
 
     }

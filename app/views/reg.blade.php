@@ -51,7 +51,10 @@
         {{ Form::label('datebirth', 'Дата рождения') }}<br/>
         {{ Form::input('date','datebirth') }}
     </p>
-
+    <p>
+        {{ Form::label('organization', 'Организация') }}<br/>
+        {{ Form::select('organization',Organization::allOrgList()) }}
+    </p>
     <p>
         {{ Form::label('department', 'Отдел') }}<br/>
         {{ Form::select('department',Department::allDepartList()) }}

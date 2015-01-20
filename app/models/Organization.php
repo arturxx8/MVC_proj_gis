@@ -10,5 +10,10 @@ class Organization extends Eloquent  {
      * @var string
      */
     protected $table = 'organization';
+    static function allOrgList()
+    {
+        $orgList = DB::table('organization')->lists('organizationname');
+        return $orgList;
 
+    }
 }
