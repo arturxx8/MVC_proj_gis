@@ -17,30 +17,26 @@
 
     <!-- username field -->
     <p>
-        {{ Form::label('login', 'Логин') }}<br/>
+        {{ Form::label('login', '*Логин') }}<br/>
         {{ Form::text('login', Input::old('login')) }}
     </p>
 
     <!-- password field -->
     <p>
-        {{ Form::label('password', 'Пароль') }}<br/>
+        {{ Form::label('password', '*Пароль') }}<br/>
         {{ Form::password('password') }}
     </p>
     <!-- password2 field -->
     <p>
-        {{ Form::label('password2', 'Подтвердите пароль') }}<br/>
+        {{ Form::label('password2', '*Подтвердите пароль') }}<br/>
         {{ Form::password('password2') }}
     </p>
     <p>
-        {{ Form::label('address', 'E-mail') }}<br/>
-        {{ Form::text('address') }}
-    </p>
-    <p>
-        {{ Form::label('name', 'Имя') }}<br/>
+        {{ Form::label('name', '*Имя') }}<br/>
         {{ Form::text('name') }}
     </p>
     <p>
-        {{ Form::label('surname', 'Фамилия') }}<br/>
+        {{ Form::label('surname', '*Фамилия') }}<br/>
         {{ Form::text('surname') }}
     </p>
     <p>
@@ -48,16 +44,20 @@
         {{ Form::text('patronymic') }}
     </p>
     <p>
-        {{ Form::label('datebirth', 'Дата рождения') }}<br/>
+        {{ Form::label('datebirth', '*Дата рождения') }}<br/>
         {{ Form::input('date','datebirth') }}
     </p>
     <p>
-        {{ Form::label('organization', 'Организация') }}<br/>
+        {{ Form::label('organization', '*Организация') }}<br/>
         {{ Form::select('organization',Organization::allOrgList()) }}
     </p>
     <p>
-        {{ Form::label('department', 'Отдел') }}<br/>
+        {{ Form::label('department', '*Отдел') }}<br/>
         {{ Form::select('department',Department::allDepartList()) }}
+    </p>
+    <p>
+        {{ Form::label('address', '*E-mail') }}<br/>
+        {{ Form::text('address') }}
     </p>
     <p>
         {{ Form::label('telephone', 'Телефон') }}<br/>
@@ -67,7 +67,11 @@
         {{ Form::label('image', 'Аватар') }}<br/>
         {{ Form::file('image'); }}
     </p>
-
+    <p>
+        {{ Form::label('secpic', '*Введите код с картинки') }}<br/>
+        {{ Form::text('secpic') }}
+    </p>
+    <p>а картинки то и нет=)</p>
     <!-- submit button -->
     <p>{{ Form::submit('Зарегестрироваться') }}</p>
 

@@ -39,8 +39,22 @@ class LoginController extends BaseController {
         $user = array(
             'login' => Input::get('login'),
             'password' => Input::get('password'),
-            'password2' => Input::get('password2')
+            'password2' => Input::get('password2'),
+            'name' => Input::get('name'),
+            'surname' => Input::get('surname'),
+            'patronymic' => Input::get('patronymic'),
+            'datebirth' => Input::get('datebirth'),
+            'organization' => Input::get('organization'),
+            'department' => Input::get('department'),
+            'address' => Input::get('address'),
+            'telephone' => Input::get('telephone'),
+            'secpic' => Input::get('secpic')
         );
+        if ($user['login']=='' or $user['password']=='' or $user['name']=='' or $user['surname']=='' or $user['department']=='' or $user['datebirth']==''
+            or $user['organization']=='' or $user['secpic']=='' or $user['address']==''){
+            return Redirect::back()->with('flash_error','Заполнены не все обязательные поля!');
+        }
+        if ()
         if ($user['password']!=$user['password2']){
             return Redirect::back()->with('flash_error','Пароли не совпадают');
         }
