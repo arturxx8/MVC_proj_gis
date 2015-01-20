@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('artx8-pc'),
+	'local' => array('artx8-pc','slav-yrich'),
 
 ));
 
