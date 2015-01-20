@@ -61,6 +61,8 @@
                                 <li> {{ HTML::linkRoute('logout', 'Выход ('.Auth::user()->name.')') }}</li>
                             @else
                                 <li @yield('nav-login')> {{ HTML::link('#authModal', 'Войти',array('id'=>'authModalBtn', 'class'=>'pull-right', 'data-toggle'=>'modal', 'data-original-title'=>'Вход')) }} </li>
+                                <li class="divider-vertical"></li>
+                                <li @yield('nav-reg')> {{ HTML::link('/reg', 'Регистрация',array('id'=>'authModalBtn', 'class'=>'pull-right', 'data-toggle'=>'modal', 'data-original-title'=>'Регистрация')) }} </li>
                             @endif
                         </ul>
                     </div>

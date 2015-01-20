@@ -25,8 +25,9 @@ class CatalogController extends BaseController {
             }
             return $cats;
         }
-
+        return '';
     }
+
 
     public function showCatalog()
     {

@@ -27,9 +27,8 @@ Route::post('login', 'LoginController@SignIn')
 Route::get('logout', array('as' => 'logout', 'uses'=>'LoginController@LogOut' ))
     ->before('auth');
 
-Route::get('profile', array('as' => 'profile', function () {
-    return View::make('profile');
-}))->before('auth');
+Route::get('profile', array('as' => 'profile', 'uses'=>'ProfileController@ShowProfile'))
+    ->before('auth');
 
 Route::get('reg', array('as' => 'reg', 'uses'=>'LoginController@showRegisterPage'))
     ->before('guest');

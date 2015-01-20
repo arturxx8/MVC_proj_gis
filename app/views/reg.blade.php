@@ -3,7 +3,9 @@
 @section('title')
     Регистрация - Библиотека ГМГС
 @stop
-
+@section('nav-reg')
+    class="active"
+@stop
 @section('content')
 
     <!-- check for login error flash var -->

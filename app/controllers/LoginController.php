@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: arturxx8
- * Date: 18.01.15
- * Time: 23:06
- */
 
 class LoginController extends BaseController {
 
@@ -40,6 +34,7 @@ class LoginController extends BaseController {
     public function showRegisterPage() {
         return View::make('reg');
     }
+
     public function Registration() {
         $user = array(
             'login' => Input::get('login'),

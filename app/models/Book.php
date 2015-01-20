@@ -12,4 +12,7 @@ class Book extends Eloquent  {
     protected $table = 'book';
     protected $primaryKey = 'id_book';
 
+    public function author(){
+        return $this->belongsTo('Author','author');
+    }
 }
