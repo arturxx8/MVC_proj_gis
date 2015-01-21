@@ -33,19 +33,19 @@
     </p>
     <p>
         {{ Form::label('name', '*Имя') }}<br/>
-        {{ Form::text('name') }}
+        {{ Form::text('name'),Input::old('name') }}
     </p>
     <p>
         {{ Form::label('surname', '*Фамилия') }}<br/>
-        {{ Form::text('surname') }}
+        {{ Form::text('surname'), Input::old('surname') }}
     </p>
     <p>
         {{ Form::label('patronymic', 'Отчество') }}<br/>
-        {{ Form::text('patronymic') }}
+        {{ Form::text('patronymic'),Input::old('patronymic') }}
     </p>
     <p>
         {{ Form::label('datebirth', '*Дата рождения') }}<br/>
-        {{ Form::input('date','datebirth') }}
+        {{ Form::input('date','datebirth'),Input::old('datebith') }}
     </p>
     <p>
         {{ Form::label('organization', '*Организация') }}<br/>
@@ -57,11 +57,11 @@
     </p>
     <p>
         {{ Form::label('address', '*E-mail') }}<br/>
-        {{ Form::text('address') }}
+        {{ Form::text('address'),Input::old('address') }}
     </p>
     <p>
         {{ Form::label('telephone', 'Телефон') }}<br/>
-        {{ Form::text('telephone') }}
+        {{ Form::text('telephone'),Input::old('telephone') }}
     </p>
     <p>
         {{ Form::label('image', 'Аватар') }}<br/>
