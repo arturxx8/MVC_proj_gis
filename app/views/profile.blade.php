@@ -19,9 +19,9 @@ function FormatDate($date){
                 <colgroup width="150" >
                     <tr> <td rowspan="10" align="center">
                         <?php
-                            $filename=URL::to('img/readers').'/'.Auth::user()->url_pic;
-                        if (file_exists($filename)){
-                        echo '<img src="'.$filename.'" style="width: 300px; heigth: 500px;" class="thumbnail" width="150">';}
+                            $filename='/img/readers/'.Auth::user()->url_pic;
+                        if (file_exists(public_path().$filename)){
+                        echo '<img src="'.URL::to('/').$filename.'" style="width: 300px; heigth: 500px;" class="thumbnail" width="150">';}
                         else {
                         echo '<img src="'.URL::to('img/lib_photos').'/default.jpg" style="width: 300px; heigth: 500px;"  class="thumbnail" >';
                         }?>
