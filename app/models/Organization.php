@@ -14,6 +14,10 @@ class Organization extends Eloquent  {
     {
         $orgList = DB::table('organization')->lists('organizationname');
         return $orgList;
-
+    }
+    static function IdOrg($name)
+    {
+        $name = DB::table('organization')->where('organizationname', $name)->pluck('id');
+        return $name;
     }
 }

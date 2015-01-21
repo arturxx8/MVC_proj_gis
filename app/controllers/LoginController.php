@@ -66,10 +66,32 @@ class LoginController extends BaseController {
         {
             return Redirect::back()->with('flash_error','Логин слишком длинный!');
         }
+        $filename = "";
+        $extension = "";
+        if (Input::hasFile('image')) {
+            $allowedext = array("png", "jpg", "jpeg", "gif");
+            $photo = Input::file('image');
+            $destinationPath = public_path() . '/uploads';
+            $filename =User::MaxId()+1 ;
+            $extension = $photo->getClientOriginalExtension();
+            if (in_array($extension, $allowedext)) {
+                $upload_success = Input::file('photo')->move($destinationPath, $filename . '.' . $extension);
+            }
+        }
         User::create(array(
+            'id'=>User::MaxId()+1,
+            'barcode'=>User::MaxBarcode()+1,
+            'name'=>$user['name'],
+            'surname'=>$user['surname'],
+            'patronymic'=>$user['patronymic'],
+            'datebirth'=>$user['datebirth'],
+            'address'=>$user['address'],
+            'telephone'=>$user['telephone'],
+            'organization'=>Organization::IdOrg($user['organization']),
+            'department'=>Department::IdDep($user['department']),
+            'url_pic'=> $filename . '.' . $extension,
             'login'=>$user['login'],
-            'password'=>Hash::make($user['password']),
-            'barcode'=>'1'
+            'password'=>Hash::make($user['password'])
         ));
         return Redirect::route('home')->with('flash_notice', 'Вы успешно зарегестрированы!');
     }

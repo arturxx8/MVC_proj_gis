@@ -13,7 +13,7 @@
         <div class="alert alert-error">{{ Session::get('flash_error') }}</div>
     @endif
 
-    {{ Form::open(array('url' => 'reg', 'method' => 'POST'),$_FILES=true) }}
+    {{ Form::open(array('url' => 'reg', 'method' => 'POST','files'=>true)) }}
 
     <!-- username field -->
     <p>

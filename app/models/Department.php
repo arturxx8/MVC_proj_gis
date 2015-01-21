@@ -16,5 +16,9 @@ class Department extends Eloquent  {
         return $depList;
 
     }
-
+    static function IdDep($name)
+    {
+        $name = DB::table('department')->where('departmentname', $name)->pluck('id');
+        return $name;
+    }
 }
