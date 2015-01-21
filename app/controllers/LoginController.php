@@ -54,9 +54,17 @@ class LoginController extends BaseController {
             or $user['organization']=='' or $user['secpic']=='' or $user['address']==''){
             return Redirect::back()->with('flash_error','Заполнены не все обязательные поля!');
         }
-        if ()
         if ($user['password']!=$user['password2']){
-            return Redirect::back()->with('flash_error','Пароли не совпадают');
+            return Redirect::back()->with('flash_error','Пароли не совпадают!');
+        }
+        var_dump($user);
+        if (User::Analog($user['login'])!='')
+        {
+            return Redirect::back()->with('flash_error','Данный логин существует!');
+        }
+        if(strlen($user['login'])>=12)
+        {
+            return Redirect::back()->with('flash_error','Логин слишком длинный!');
         }
         User::create(array(
             'login'=>$user['login'],
