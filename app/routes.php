@@ -50,6 +50,10 @@ Route::post('search', 'SearchController@SearchBooks')
     ->before('csrf')
     ->before('auth');
 
+Route::post('takeBook', 'TakeBookController@TakeBook')
+    ->before('csrf')
+    ->before('auth');
+
 Route::controller('password', 'RemindersController');
 Route::get('remind_pass','RemindersController@getRemind');
 

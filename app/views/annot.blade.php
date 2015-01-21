@@ -33,7 +33,17 @@
                         echo '<p class="green1">'.'<b>Издание&nbsp</b>'.'не указано</b>'.'</p>';
                     }
                     if ($book->status == 1) {
-                        echo '<button class="btn" onclick="javascript: goToPage()">Взять почитать</button>';}
+
+                        {{ Form::open(array('url' => 'takeBook', 'method' => 'POST')) }}
+
+                        {{Form::hidden('bookId', $book['id_book'])}}
+
+                        {{ Form::submit('Взять почитать')}}
+
+                        {{ Form::close() }}
+
+                        <!--echo '<button class="btn" onclick="javascript: goToPage()">Взять почитать</button>';-->
+                        }
                     else {
                         echo'<p><b>Книга отсутсвует в библиотеке</b></p>';
                         echo '<button disabled class="btn" disabled onclick="javascript: goToPage()">Взять почитать</button>';
