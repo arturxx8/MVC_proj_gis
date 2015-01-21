@@ -71,11 +71,11 @@ class LoginController extends BaseController {
         if (Input::hasFile('image')) {
             $allowedext = array("png", "jpg", "jpeg", "gif");
             $photo = Input::file('image');
-            $destinationPath = public_path() . '/uploads';
+            $destinationPath = public_path() . '/img/readers/';
             $filename =User::MaxId()+1 ;
             $extension = $photo->getClientOriginalExtension();
             if (in_array($extension, $allowedext)) {
-                $upload_success = Input::file('photo')->move($destinationPath, $filename . '.' . $extension);
+                $upload_success = Input::file('image')->move($destinationPath, $filename . '.' . $extension);
             }
         }
         User::create(array(

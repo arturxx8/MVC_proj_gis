@@ -23,7 +23,7 @@ function FormatDate($date){
                         if (file_exists($filename)){
                         echo '<img src="'.$filename.'" style="width: 300px; heigth: 500px;" class="thumbnail" width="150">';}
                         else {
-                        echo '<img src="'.URL::to('img/readers').'/103.jpg" style="width: 300px; heigth: 500px;"  class="thumbnail" >';
+                        echo '<img src="'.URL::to('img/lib_photos').'/default.jpg" style="width: 300px; heigth: 500px;"  class="thumbnail" >';
                         }?>
                        </td>
                     </tr>
