@@ -49,11 +49,22 @@ class Catalog extends Eloquent  {
     return $tree;
     }
 
-    static function allCategoryList()
+    public static function allCategoryList()
     {
-        $catList = DB::table('category')->lists('category_name');
-        return $catList;
+        $katList=DB::table('category')->lists('category_name');
+        foreach ($katList as $cat)
+        {
+            $result[$cat]=$cat;
+        }
+        return $result;
+    }
 
+    public static function getCategorList($CategoryName)
+    {
+
+        return DB::table('category')
+            ->where('category_name','Like','%'.$CategoryName.'%')
+            ->lists('id');
     }
 
 }

@@ -1,8 +1,6 @@
 <?php
 
-
-class Department extends Eloquent  {
-
+class Department extends Eloquent {
 
     /**
      * The database table used by the model.
@@ -10,6 +8,11 @@ class Department extends Eloquent  {
      * @var string
      */
     protected $table = 'department';
-    protected $list = DB::table('department')->lists('departmentName');
+    static function allDepartList()
+    {
+        $depList = DB::table('department')->lists('departmentname');
+        return $depList;
+
+    }
 
 }
