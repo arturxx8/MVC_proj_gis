@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    //Здесь будет форма поиска...
+    <!--Здесь будет форма поиска...-->
 
     <!-- check for login error flash var -->
     @if (Session::has('flash_error'))
@@ -28,7 +28,7 @@
     <!-- password2 field -->
     <p>
         {{ Form::label('Category', 'Категория') }}<br/>
-        {{ Form::select('Category',Catalog::allCategoryList())}}
+        {{ Form::select('Category',(Catalog::allCategoryList()))}}
     </p>
 
     <!-- submit button -->

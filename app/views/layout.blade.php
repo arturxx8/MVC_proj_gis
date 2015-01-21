@@ -48,7 +48,7 @@
                         </ul>
                         {{ Form::open(array('url' => URL::route('search'), 'method' => 'POST', 'class'=>'navbar-search form-search')) }}
                             <div class="input-append">
-                                {{Form::input('text','searchTextBox',null, array('class'=>'span3 search-query', 'placeholder'=>'Поиск по каталогу')) }}
+                                {{Form::input('text','Title',null, array('class'=>'span3 search-query', 'placeholder'=>'Поиск в каталоге по названию')) }}
                                 {{ Form::submit('Найти', array('class'=>'btn')) }}
                             </div>
                         {{Form::close()}}

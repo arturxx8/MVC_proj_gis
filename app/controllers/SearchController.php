@@ -17,7 +17,19 @@ class SearchController extends BaseController {
 
     public function SearchBooks()
     {
-        return View::make('search');
+        $KeyData = array(
+            'AuthorName' => Input::get('AuthorName'),
+            'Title' => Input::get('Title'),
+            'Category' => Input::get('Category')
+        );
+
+        if ($KeyData['AuthorName']=='') $KeyData['AuthorName']='%';
+        if ($KeyData['Title']=='') $KeyData['Title']='%';
+        if ($KeyData['Category']=='Каталог литературы') $KeyData['Category']='%';
+
+        $result=Book::searchBook($KeyData);//'результат поиска';
+
+        return View::make('search')->with('result',$result)->with('KeyData',$KeyData);
     }
 
     public function SearchBooksExtend()
